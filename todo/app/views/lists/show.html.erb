@@ -1,0 +1,19 @@
+<h1>TODO</h1>
+
+<h2><%= @list.title %></h2>
+
+<p><%= @list.description %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_list_path(@list) %></li>
+  <li><%= link_to "Destroy", list_path(@list), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+<h3>Tasks</h3>
+<%= render @list.tasks %>
+
+<h2>Add a task:</h2>
+<%= render "tasks/form", article: @article %>

@@ -1,0 +1,19 @@
+<p>
+<%= link_to [task.list, task], data: {
+  turbo_method: :patch,
+} do%>
+<% if task.closed? %>
+☑️
+<% else %>
+⬜
+<% end %>
+<% end %>
+<strong><%= task.title %></strong>: <%= task.additional_details %> 
+
+                <%= link_to "Delete Task", [task.list, task], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+</p>
+
+
