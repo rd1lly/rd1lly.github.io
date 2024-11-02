@@ -341,9 +341,9 @@ of the files and folders that Rails creates by default:</p>
 get your Rails application server running.</p><h3 id="starting-up-the-web-server"><a class="anchorlink" href="#starting-up-the-web-server"><span>4.1</span> Starting Up the Web Server</a></h3><p>You actually have a functional Rails application already. To see it, you need to
 start a web server on your development machine. You can do this by running the
 following command in the <code>todo</code> directory:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>server
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>server
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails server
+<button class="clipboard-button" data-clipboard-text="rails server
 ">Copy</button>
 </div>
 <div class="interstitial info"><p>If you are using Windows, you have to pass the scripts under the <code>bin</code>
@@ -386,9 +386,9 @@ end
 action of <code>ListsController</code>.</p><p>To create <code>ListsController</code> and its <code>index</code> action, we'll run the controller
 generator (with the <code>--skip-routes</code> option because we already have an
 appropriate route):</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>generate controller Lists index <span class="nt">--skip-routes</span>
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>generate controller Lists index <span class="nt">--skip-routes</span>
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails generate controller Lists index --skip-routes
+<button class="clipboard-button" data-clipboard-text="rails generate controller Lists index --skip-routes
 ">Copy</button>
 </div>
 <p>Rails will create several files for you:</p><div class="interstitial code">
@@ -437,7 +437,7 @@ action will render <code>app/views/lists/index.html.erb</code> by default.</p><p
 ">Copy</button>
 </div>
 <p>If you previously stopped the web server to run the controller generator,
-restart it with <code>bin/rails server</code>. Now visit <a href="http://localhost:3000/lists">http://localhost:3000/lists</a>,
+restart it with <code>rails server</code>. Now visit <a href="http://localhost:3000/lists">http://localhost:3000/lists</a>,
 and see our text displayed!</p><h3 id="setting-the-application-home-page"><a class="anchorlink" href="#setting-the-application-home-page"><span>4.3</span> Setting the Application Home Page</a></h3><p>At the moment, <a href="http://localhost:3000/">http://localhost:3000</a> still displays a page with the Ruby on Rails logo.
 Let's display our "Hello, Rails!" text at <a href="http://localhost:3000/">http://localhost:3000</a> as well. To do
 so, we will add a route that maps the <em>root path</em> of our application to the
@@ -476,9 +476,9 @@ make it easier to reason about. Rails follows this design pattern by convention.
 piece: a model.</p><h3 id="mvc-and-you-generating-a-model"><a class="anchorlink" href="#mvc-and-you-generating-a-model"><span>6.1</span> Generating a Model</a></h3><p>A <em>model</em> is a Ruby class that is used to represent data. Additionally, models
 can interact with the application's database through a feature of Rails called
 <em>Active Record</em>.</p><p>To define a model, we will use the model generator:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>generate model List title:string description:text
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>generate model List title:string description:text
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails generate model List title:string description:text
+<button class="clipboard-button" data-clipboard-text="rails generate model List title:string description:text
 ">Copy</button>
 </div>
 <div class="interstitial note"><p>Model names are <strong>singular</strong>, because an instantiated model represents a
@@ -533,13 +533,13 @@ constructed. By default, the <code>create_table</code> method adds an <code>id</
 auto-incrementing primary key. So the first record in the table will have an
 <code>id</code> of 1, the next record will have an <code>id</code> of 2, and so on.</p><p>Inside the block for <code>create_table</code>, two columns are defined: <code>title</code> and
 <code>description</code>. These were added by the generator because we included them in our
-generate command (<code>bin/rails generate model List title:string description:text</code>).</p><p>On the last line of the block is a call to <code>t.timestamps</code>. This method defines
+generate command (<code>rails generate model List title:string description:text</code>).</p><p>On the last line of the block is a call to <code>t.timestamps</code>. This method defines
 two additional columns named <code>created_at</code> and <code>updated_at</code>. As we will see,
 Rails will manage these for us, setting the values when we create or update a
 model object.</p><p>Let's run our migration with the following command:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>db:migrate
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>db:migrate
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails db:migrate
+<button class="clipboard-button" data-clipboard-text="rails db:migrate
 ">Copy</button>
 </div>
 <p>The command will display output indicating that the table was created:</p><div class="interstitial code">
@@ -557,9 +557,9 @@ model object.</p><p>Let's run our migration with the following command:</p><div 
 <div class="interstitial info"><p>To learn more about migrations, see <a href="https://guides.rubyonrails.org/active_record_migrations.html">Active Record Migrations</a>.</p></div><p>Now we can interact with the table using our model.</p><h3 id="using-a-model-to-interact-with-the-database"><a class="anchorlink" href="#using-a-model-to-interact-with-the-database"><span>6.3</span> Using a Model to Interact with the Database</a></h3><p>To play with our model a bit, we're going to use a feature of Rails called the
 <em>console</em>. The console is an interactive coding environment just like <code>irb</code>, but
 it also automatically loads Rails and our application code.</p><p>Let's launch the console with this command:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>console
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>console
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails console
+<button class="clipboard-button" data-clipboard-text="rails console
 ">Copy</button>
 </div>
 <p>You should see an <code>irb</code> prompt like:</p><div class="interstitial code">
@@ -663,7 +663,7 @@ short, for readability.</p><p>Since we don't want to output the value returned b
 enclosed that code in <code>&lt;% %&gt;</code>. But, since we <em>do</em> want to output the value
 returned by <code>list.title</code> (for each list), we've enclosed that code in
 <code>&lt;%= %&gt;</code>.</p><p>We can see the final result by visiting <a href="http://localhost:3000/">http://localhost:3000</a>. (Remember that
-<code>bin/rails server</code> must be running!) Here's what happens when we do that:</p>
+<code>rails server</code> must be running!) Here's what happens when we do that:</p>
 <ol>
 <li>The browser makes a request: <code>GET http://localhost:3000</code>.</li>
 <li>Our Rails application receives this request.</li>
@@ -787,8 +787,8 @@ the two <code>get</code> routes in <code>config/routes.rb</code> with <code>reso
 end
 ">Copy</button>
 </div>
-<p>We can inspect what routes are mapped by running the <code>bin/rails routes</code> command:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>routes
+<p>We can inspect what routes are mapped by running the <code>rails routes</code> command:</p><div class="interstitial code">
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>routes
 <span class="gp">      Prefix Verb   URI Pattern                  Controller#</span>Action
 <span class="gp">        root GET    /                            lists#</span>index
 <span class="gp">    lists GET    /lists(.:format)          lists#</span>index
@@ -799,7 +799,7 @@ end
 <span class="gp">             PATCH  /lists/:id(.:format)      lists#</span>update
 <span class="gp">             DELETE /lists/:id(.:format)      lists#</span>destroy
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails routes
+<button class="clipboard-button" data-clipboard-text="rails routes
 ">Copy</button>
 </div>
 <p>The <code>resources</code> method also sets up URL and path helper methods that we can use
@@ -1579,9 +1579,9 @@ InCRUDable!</p><h2 id="adding-a-second-model"><a class="anchorlink" href="#addin
 tasks on lists.</p><h3 id="adding-a-second-model-generating-a-model"><a class="anchorlink" href="#adding-a-second-model-generating-a-model"><span>8.1</span> Generating a Model</a></h3><p>We're going to see the same generator that we used before when creating
 the <code>List</code> model. This time we'll create a <code>Task</code> model to hold a
 reference to an list. Run this command in your terminal:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>generate model Task title:string body:text list:references
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>generate model Task title:string body:text list:references
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails generate model Task title:string body:text list:references
+<button class="clipboard-button" data-clipboard-text="rails generate model Task title:string body:text list:references
 ">Copy</button>
 </div>
 <p>This command will generate four files:</p>
@@ -1653,9 +1653,9 @@ end
 <p>The <code>t.references</code> line creates an integer column called <code>list_id</code>, an index
 for it, and a foreign key constraint that points to the <code>id</code> column of the <code>lists</code>
 table. Go ahead and run the migration:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>db:migrate
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>db:migrate
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails db:migrate
+<button class="clipboard-button" data-clipboard-text="rails db:migrate
 ">Copy</button>
 </div>
 <p>Rails is smart enough to only execute the migrations that have not already been
@@ -1736,9 +1736,9 @@ another part of capturing the hierarchical relationship that exists between
 lists and tasks.</p><div class="interstitial info"><p>For more information on routing, see the <a href="https://guides.rubyonrails.org/routing.html">Rails Routing</a>
 guide.</p></div><h3 id="generating-a-controller"><a class="anchorlink" href="#generating-a-controller"><span>8.4</span> Generating a Controller</a></h3><p>With the model in hand, you can turn your attention to creating a matching
 controller. Again, we'll use the same generator we used before:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>generate controller Tasks
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>generate controller Tasks
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails generate controller Tasks
+<button class="clipboard-button" data-clipboard-text="rails generate controller Tasks
 ">Copy</button>
 </div>
 <p>This creates three files and one empty directory:</p>
@@ -2062,17 +2062,17 @@ app/models/concerns
 ">Copy</button>
 </div>
 <p>In the example below, we will implement a new feature for our app that would benefit from using a concern. Then, we will create a concern, and refactor the code to use it, making the code more DRY and maintainable.</p><p>The most satisfying part of a to do list is checking things off and completing tasks or entire list. This could be represented using a <code>status</code> column in each model.</p><p>First, let's run the following migrations to add <code>status</code> to <code>Lists</code> and <code>Tasks</code>:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>generate migration AddStatusToLists status:string
-<span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>generate migration AddStatusToTasks status:string
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>generate migration AddStatusToLists status:string
+<span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>generate migration AddStatusToTasks status:string
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails generate migration AddStatusToLists status:string
-bin/rails generate migration AddStatusToTasks status:string
+<button class="clipboard-button" data-clipboard-text="rails generate migration AddStatusToLists status:string
+rails generate migration AddStatusToTasks status:string
 ">Copy</button>
 </div>
 <p>And next, let's update the database with the generated migrations:</p><div class="interstitial code">
-<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">bin/rails </span>db:migrate
+<pre><code class="highlight console"><span class="gp">$</span><span class="w"> </span><span class="nb">rails </span>db:migrate
 </code></pre>
-<button class="clipboard-button" data-clipboard-text="bin/rails db:migrate
+<button class="clipboard-button" data-clipboard-text="rails db:migrate
 ">Copy</button>
 </div>
 <p>To choose the status for the existing lists and tasks you can add a default value to the generated migration files by adding the <code>default: "open"</code> option and launch the migrations again. You can also call in a rails console <code>List.update_all(status: "open")</code> and <code>Task.update_all(status: "open")</code>.</p><div class="interstitial info"><p>To learn more about migrations, see <a href="https://guides.rubyonrails.org/active_record_migrations.html">Active Record Migrations</a>.</p></div><p>We also have to permit the <code>:status</code> key as part of the strong parameter, in <code>app/controllers/lists_controller.rb</code>:</p><div class="interstitial code">
@@ -2103,7 +2103,7 @@ bin/rails generate migration AddStatusToTasks status:string
     end
 ">Copy</button>
 </div>
-<p>Within the <code>list</code> model, after running a migration to add a <code>status</code> column using <code>bin/rails db:migrate</code> command, you would add:</p><div class="interstitial code">
+<p>Within the <code>list</code> model, after running a migration to add a <code>status</code> column using <code>rails db:migrate</code> command, you would add:</p><div class="interstitial code">
 <pre><code class="highlight ruby"><span class="k">class</span> <span class="nc">List</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
   <span class="n">has_many</span> <span class="ss">:tasks</span>
 
