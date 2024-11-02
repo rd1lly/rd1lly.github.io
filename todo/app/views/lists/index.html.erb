@@ -1,12 +1,14 @@
-<h1>TODO</h1>
+<p>
+  Displaying <%= List.open_count %> open lists out of <%= List.total_count %> total lists
+</p>
+
 <p>Select a list to view task details</p>
 
-Displaying <%= List.open_count %> open lists out of <%= List.total_count %>
 <ul>
   <% @lists.each do |list| %>
     <li>
     <% if list.closed? %>
-    ☑️
+    ✅
     <% else %>
     ⬜
     <% end %>

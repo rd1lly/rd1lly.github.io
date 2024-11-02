@@ -1,17 +1,17 @@
 <%= form_with model: [ @list, @list.tasks.build ] do |form| %>
-    <p>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
-    </p>
-    <p>
-      <%= form.label :additional_details %><br>
-      <%= form.text_area :additional_details %>
-    </p>
-    <p>
-    <%= form.label :status %><br>
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :additional_details %>
+    <%= form.text_area :additional_details %>
+  </p>
+  <p>
+    <%= form.label :status %>
     <%= form.select :status, Visible::VALID_STATUSES, selected: 'Open' %>
   </p>
-    <p>
-      <%= form.submit %>
-    </p>
-  <% end %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
